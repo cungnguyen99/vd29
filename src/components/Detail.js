@@ -1,11 +1,17 @@
 import React, { Component } from 'react'
 import data from '../data'
+import Header from './Header'
+import NewsRelated from './NewsRelated'
 export default class Detail extends Component {
   render() {
+    let count=0;
     return (
+      <>
+      <Header/>
       <div className="container">
           {
             data.map((val, key) => {
+              console.log(this.props)
               if (val.id == this.props.match.params.id) {
                 return (
                   <div className="row">
@@ -26,6 +32,33 @@ export default class Detail extends Component {
             })
           }
         </div>
+        <hr/>
+        <div className="container">
+          <h2 className="text-center">New Related</h2>
+          <div className="row">
+            {
+              data.map((item,index)=>{
+                if(count<=4){
+                  count++;
+                  if(item.id!=this.props.match.params.id){
+                    return(
+                      <div className="col-3">
+                        <NewsRelated  
+                            key={index}
+                            idPortfolio={item.id}
+                            count={index + 1} 
+                            heading={item.heading} 
+                            description={item.description}></NewsRelated>
+                      </div>
+                    )
+                  }
+                }
+              })
+            }
+          </div>
+        </div>
+
+        </>
     )
   }
 }
