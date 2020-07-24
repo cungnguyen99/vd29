@@ -1,7 +1,29 @@
 import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom';
 
 export default class Contact extends Component {
+  constructor(props) {
+    super(props);
+    this.state={
+      isRedirect: false
+    }
+  }
+  
+  /**
+   * 
+   * @param {*} event 
+   * Thêm phần submitForm để khi nhấn submit sẽ không chuyển trang mà sẽ redirect sang một trang khác.
+   */
+  submitForm(event){
+    event.preventDefault();
+    this.setState({
+      isRedirect: true
+    })
+  }
   render() {
+    if(this.state.isRedirect==true){
+      return <Redirect to="/"/>
+    }
     return (
       <section className="page-section" id="contact">
         <div className="container">
@@ -34,7 +56,7 @@ export default class Contact extends Component {
             </div>
             <div className="text-center">
               <div id="success" />
-              <button className="btn btn-primary btn-xl text-uppercase" id="sendMessageButton" type="submit">Send Message</button>
+              <button className="btn btn-primary btn-xl text-uppercase" onClick={(event)=>this.submitForm(event)} id="sendMessageButton" type="submit">Send Message</button>
             </div>
           </form>
         </div>
