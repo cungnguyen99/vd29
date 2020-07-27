@@ -8,7 +8,20 @@ export default class Contact extends Component {
       isRedirect: false
     }
   }
-  
+  isChange=(event)=>{
+    /**
+     * Lấy ra cả mảng gồm tên trường của input và giá trị của nó
+     */
+    const {name, value}=event.target
+    /**
+     * Khi lấy được rồi ta lưu vào state bằng cú pháp trong react lưu hết tất cả các trường và giá trị của từng input
+     * vào: this.setState({[name]:value}) mà ta không cần phải khai báo các biến ở state trên constructor đáng ra ta phải khai báo trước là
+     * this.state({fName:'',fEmail:'',fPhone:'', fMess:''}) rồi trong hàm này mới setState({fName: event.target.value, viết tương tự})
+     * nhưng react cung cấp cú pháp [name]:value là có thể lấy hết từng trường input trong form và giá trị tương ưng
+     * rồi lưu hết vào state mà k cần khai báo như trên cũng có trong state các trường là fName, fEmail...
+     */
+    this.setState({[name]:value})
+  }
   /**
    * 
    * @param {*} event 
@@ -22,6 +35,7 @@ export default class Contact extends Component {
   }
   render() {
     if(this.state.isRedirect==true){
+      console.log(this.state)
       return <Redirect to="/"/>
     }
     return (
@@ -35,21 +49,25 @@ export default class Contact extends Component {
             <div className="row align-items-stretch mb-5">
               <div className="col-md-6">
                 <div className="form-group">
-                  <input className="form-control" id="name" type="text" placeholder="Your Name *" required="required" data-validation-required-message="Please enter your name." />
+                  <input className="form-control" name="fName" id="name" type="text"  onChange={(event)=>this.isChange(event)} placeholder="Your Name *" required="required" data-validation-required-message="Please enter your name." />
                   <p className="help-block text-danger" />
                 </div>
                 <div className="form-group">
-                  <input className="form-control" id="email" type="email" placeholder="Your Email *" required="required" data-validation-required-message="Please enter your email address." />
+                  {/* 
+                    Biến event là biến sự kiện xảy ra. Lưu trữ tên của trường xảy ra sự kiện
+                    và giá trị của trường đó. muốn lấy ra tên trường: event.target.name, lấy giá trị event.target.value
+                   */}
+                  <input className="form-control" id="email" name="fEmail" type="email"  onChange={(event)=>this.isChange(event)} placeholder="Your Email *" required="required" data-validation-required-message="Please enter your email address." />
                   <p className="help-block text-danger" />
                 </div>
                 <div className="form-group mb-md-0">
-                  <input className="form-control" id="phone" type="tel" placeholder="Your Phone *" required="required" data-validation-required-message="Please enter your phone number." />
+                  <input className="form-control" id="phone" name="fPhone" type="tel"  onChange={(event)=>this.isChange(event)} placeholder="Your Phone *" required="required" data-validation-required-message="Please enter your phone number." />
                   <p className="help-block text-danger" />
                 </div>
               </div>
               <div className="col-md-6">
                 <div className="form-group form-group-textarea mb-md-0">
-                  <textarea className="form-control" id="message" placeholder="Your Message *" required="required" data-validation-required-message="Please enter a message." defaultValue={""} />
+                  <textarea className="form-control" id="message" name="fMess" onChange={(event)=>this.isChange(event)} placeholder="Your Message *" required="required" data-validation-required-message="Please enter a message." defaultValue={""} />
                   <p className="help-block text-danger" />
                 </div>
               </div>
