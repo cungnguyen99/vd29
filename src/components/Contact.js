@@ -8,6 +8,13 @@ export default class Contact extends Component {
       isRedirect: false
     }
   }
+  isChangeFile=(event)=>{
+    const name=event.target.name;
+    const value=event.target.files[0].name;
+    this.setState({
+      [name]: value
+    })
+  }
   isChange=(event)=>{
     /**
      * Lấy ra cả mảng gồm tên trường của input và giá trị của nó
@@ -62,6 +69,10 @@ export default class Contact extends Component {
                 </div>
                 <div className="form-group mb-md-0">
                   <input className="form-control" id="phone" name="fPhone" type="tel"  onChange={(event)=>this.isChange(event)} placeholder="Your Phone *" required="required" data-validation-required-message="Please enter your phone number." />
+                  <p className="help-block text-danger" />
+                </div>
+                <div className="form-group mb-md-0">
+                  <input className="form-control" id="file" name="fImage" type="file"  onChange={(event)=>this.isChangeFile(event)}/>
                   <p className="help-block text-danger" />
                 </div>
                 <div className="form-group mb-md-0">
