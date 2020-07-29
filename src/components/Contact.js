@@ -64,6 +64,15 @@ export default class Contact extends Component {
                   <input className="form-control" id="phone" name="fPhone" type="tel"  onChange={(event)=>this.isChange(event)} placeholder="Your Phone *" required="required" data-validation-required-message="Please enter your phone number." />
                   <p className="help-block text-danger" />
                 </div>
+                <div className="form-group mb-md-0">
+                  <select className="form-control" id="date" name="fDate" type="date"  onChange={(event)=>this.isChange(event)} >
+                    <option value="Monday">Monday</option>
+                    <option value="Tuesday">Tuesday</option>
+                    <option value="Saturday">Saturday</option>
+                    <option value="Sunday">Sunday</option>
+                    </select>
+                  <p className="help-block text-danger" />
+                </div>
               </div>
               <div className="col-md-6">
                 <div className="form-group form-group-textarea mb-md-0">
