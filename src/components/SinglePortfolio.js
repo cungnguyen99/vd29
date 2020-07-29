@@ -24,17 +24,17 @@ function to_slug(str){
 }
 export default function SinglePortfolio( {heading, subheading, idPortfolio, count}) {
   return (
-    <div class="col-lg-4 col-sm-6 mb-4">
-      <div class="portfolio-item">
-        <Link class="portfolio-link" to={`/portfolio/${to_slug(subheading)}.${idPortfolio}.html`}>
-          <div class="portfolio-hover">
-            <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+    <div className="col-lg-4 col-sm-6 mb-4">
+      <div className="portfolio-item">
+        <Link className="portfolio-link" to={`/portfolio/${to_slug(subheading)}.${idPortfolio}.html`}>
+          <div className="portfolio-hover">
+            <div className="portfolio-hover-content"><i className="fas fa-plus fa-3x"></i></div>
           </div>
-          <img class="img-fluid" src={`https://startbootstrap.github.io/startbootstrap-agency/assets/img/portfolio/0${count}-thumbnail.jpg`} alt="abc" />
+          <img className="img-fluid" src={`https://startbootstrap.github.io/startbootstrap-agency/assets/img/portfolio/0${count}-thumbnail.jpg`} alt="abc" />
         </Link>
-        <div class="portfolio-caption">
-          <div class="portfolio-caption-heading">{heading}</div>
-          <div class="portfolio-caption-subheading text-muted">{subheading}</div>
+        <div className="portfolio-caption">
+          <div className="portfolio-caption-heading">{heading}</div>
+          <div className="portfolio-caption-subheading text-muted">{subheading}</div>
         </div>
       </div>
     </div>

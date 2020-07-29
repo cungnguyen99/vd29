@@ -31,7 +31,7 @@ export default class Team extends Component {
               {
                 this.state.services.map((item, index)=>{
                   return(
-                    <div className="col-lg-4">
+                    <div className="col-lg-4" key={index}>
                       <SingleTeam name={item.name} heading={item.heading} count={index+1}/>
                     </div>
                   )

@@ -34,7 +34,7 @@ export default class Contact extends Component {
     })
   }
   render() {
-    if(this.state.isRedirect==true){
+    if(this.state.isRedirect===true){
       console.log(this.state)
       return <Redirect to="/"/>
     }

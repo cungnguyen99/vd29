@@ -12,16 +12,16 @@ export default class Detail extends Component {
           {
             data.map((val, key) => {
               console.log(this.props)
-              if (val.id == this.props.match.params.id) {
+              if (val.id === parseInt(this.props.match.params.id,20)) {
                 return (
                   <div className="row">
                   <div className="col-4">
                     <img className="img-fluid" src={`https://startbootstrap.github.io/startbootstrap-agency/assets/img/portfolio/0${key+1}-thumbnail.jpg`} alt="abc" />
                   </div>
                     <div className="col-8">
-                      <div class="portfolio-caption">
-                        <div class="portfolio-caption-heading">{val.heading}</div>
-                        <div class="portfolio-caption-subheading text-muted">{val.subheading}</div>
+                      <div className="portfolio-caption">
+                        <div className="portfolio-caption-heading">{val.heading}</div>
+                        <div className="portfolio-caption-subheading text-muted">{val.subheading}</div>
                         <div><p>{val.description}</p></div>
                       </div>
                     </div>
@@ -29,6 +29,7 @@ export default class Detail extends Component {
 
                     )
                 }
+                return true
             })
           }
         </div>
@@ -40,7 +41,7 @@ export default class Detail extends Component {
               data.map((item,index)=>{
                 if(count<=4){
                   count++;
-                  if(item.id!=this.props.match.params.id){
+                  if(item.id!==parseInt(this.props.match.params.id,20)){
                     return(
                       <div className="col-3">
                         <NewsRelated  
@@ -53,6 +54,7 @@ export default class Detail extends Component {
                     )
                   }
                 }
+                return true
               })
             }
           </div>

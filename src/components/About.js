@@ -42,7 +42,7 @@ export default class About extends Component {
               {
                 this.state.services.map((item, index) => {
                   return (
-                    <SingleAbout count={index + 1} date={item.date}
+                    <SingleAbout key={index} count={index + 1} date={item.date}
                       subheading={item.subheading} inverted={item.inverted} text={item.text} />
                   )
                 })
